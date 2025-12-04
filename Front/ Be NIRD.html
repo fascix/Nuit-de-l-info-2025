@@ -7,20 +7,26 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<!-- Rideau d'ouverture -->
 <div class="container-principal" id="containerPrincipal">
     <div class="container-content">
         <div class="title">
             <h1>Be NIRD</h1>
         </div>
-        <button class="button" id="openButton">Let's start the adventure !
-        </button>
+        <button class="button" id="openButton">Let's start the adventure !</button>
     </div>
 </div>
 
+<!-- Quiz qui apparaît après l'ouverture -->
 <div class="hidden-content" id="hiddenContent">
-    <h2>🎭 Le spectacle commence !  🎭</h2>
-    <p>Voici le contenu révélé après l'ouverture du rideau</p>
-    <!-- Ajoutez votre contenu ici -->
+    <div class="quiz-container">
+        <h1>Quête de l'aventurier</h1>
+        <div id="cards"></div>
+        <div class="nav-buttons">
+            <button id="prevBtn">← Précédent</button>
+            <button id="nextBtn">Suivant →</button>
+        </div>
+    </div>
 </div>
 
 <script src="script.js"></script>
