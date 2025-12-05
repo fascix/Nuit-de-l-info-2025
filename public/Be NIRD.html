@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Be NIRD</title>
+		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="snake/snake-home.css" />
+		<link rel="stylesheet" href="username/user.css">
+		<link rel="stylesheet" href="chatbot/chatbot.css"
+	</head>
+	<body>
+		<!-- Rideau d'ouverture -->
+		<div class="container-principal" id="containerPrincipal">
+			<div class="container-content">
+				<div class="title">
+					<h1>Be NIRD</h1>
+				</div>
+				<button class="button" id="openButton">
+					Let's start the adventure !
+				</button>
+			</div>
+		</div>
+
+		<!-- Interface intermédiaire pour le username -->
+		<div class="username-screen" id="usernameScreen" style="display: none">
+			<div class="input-group">
+				<label for="username">Nom d'utilisateur (optionnel) :</label>
+				<input
+					type="text"
+					id="username"
+					placeholder="Tapez votre nom d'utilisateur..."
+					autocomplete="off"
+				/>
+				<p style="font-size: 0.9em; color: #555; margin-top: 5px;">
+					Vous pouvez laisser vide et cliquer sur le bouton pour passer au quiz
+				</p>
+				<button id="startQuizBtn">Commencer l'aventure</button>
+			</div>
+		</div>
+
+		<!-- Quiz qui apparaît après l'ouverture -->
+		<div class="hidden-content" id="hiddenContent">
+			<div class="snake-home">
+				<canvas id="snake-canvas"></canvas>
+			</div>
+			<div class="quiz-container">
+				<h1>Quête de l'aventurier</h1>
+				<div id="cards"></div>
+				<div class="nav-buttons">
+					<button id="prevBtn">← Précédent</button>
+					<button id="nextBtn">Suivant →</button>
+				</div>
+			</div>
+		</div>
+		 <div id="timer-display" class="timer-box">⏳ 00:00</div>
+
+		<!-- Page de fin (cachée par défaut) -->
+		<div id="endScreen" class="end-screen hidden">
+			<div class="end-content">
+				<h1 class="end-title">Bravo : <span id="endUsername"></span> !</h1>
+
+				<div class="score-box">
+					<h2 class="final-score">
+						Score Final : <span id="finalScore">0</span> / <span id="finalTotal">0</span>
+					</h2>
+					<p class="percentage">
+						<span id="finalPercentage">0</span>% de réussite
+					</p>
+				</div>
+
+				<div class="custom-content">
+					 <h3 class="content-title">Récapitulatif </h3>
+
+                    <p class="content-text">
+                        Vous avez démontré votre connaissance de la démarche NIRD et du numérique responsable.
+                        Votre score prouve que vous êtes sensibilisé aux enjeux environnementaux du numérique.
+                    </p>
+
+                    <p class="content-text">
+                        Ensemble, construisons un avenir numérique plus durable et inclusif !
+                    </p>
+
+                    <div class="achievements">
+                        <h4 style="margin-bottom: 15px; font-size: 1.3em;">Ce que vous avez pu voir :</h4>
+                        <ul class="achievement-list">
+                            <li>✅
+ L'impact environnemental de la production numérique</li>
+                            <li>✅
+ Les principes du NIRD (Numérique Inclusif Responsable Durable)</li>
+                            <li>✅
+ Les avantages de Linux pour la durabilité</li>
+                            <li>✅
+ L'importance du reconditionnement</li>
+                        </ul>
+                    </div>
+
+                    <div class="next-steps">
+                        <h4 style="margin-top: 25px; margin-bottom: 15px; font-size: 1.3em;"> Et maintenant ?</h4>
+                        <p class="content-text">
+                            Continuez à utiliser des pratiques numériques responsables au quotidien notamment en parlant autour de vous de la démarche NIRD.
+                        </p>
+                        <p>Et consulter le site de la démarche NIRD pour devenir incolable dessus ! </p>
+                        <a href="https://nird.forge.apps.education.fr/index.html">Démarche NIRD</a>
+                    </div>
+				</div>
+
+				<button id="restartBtn" class="restart-button">
+					 On repart pour un tour ?
+				</button>
+			</div>
+		</div>
+		<button class="chat-button" id="chatButton" onclick="toggleChat()">
+        <!-- Ici on charge l'image de Pedro qui est dans le dossier chatbot -->
+        <img src="chatbot/pedro.png" alt="Pedro" class="chat-avatar" />
+    </button>
+
+    <!-- La fenêtre de discussion -->
+    <div class="chat-container" id="chatContainer">
+        <div class="header">
+            <div class="header-title">
+                <span style="font-size: 1.2em;">👱</span>
+                <h1>Pedro (L'Assistant)</h1>
+            </div>
+            <button class="close-btn" onclick="toggleChat()">×</button>
+        </div>
+
+        <div class="model-selector">
+            <select id="modelSelect" onchange="changeModel()">
+                <option value="openai/gpt-oss-20b:free">GPT-OSS 20b (Gratuit)</option>
+                <option value="meta-llama/llama-3.2-3b-instruct:free">Llama 3.2 3B (Gratuit)</option>
+            </select>
+            <button class="clear-btn" onclick="clearConversation()">🗑️ Effacer la mémoire</button>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+            <div class="message assistant">
+                <div class="message-avatar">🤖</div>
+                <div class="message-content">
+                    Holà ! Je suis Pedro ! Qu'est-ce que tu veux ?
+                </div>
+            </div>
+        </div>
+
+        <div class="input-area">
+            <div class="input-container">
+                <input
+                    type="text"
+                    id="messageInput"
+                    placeholder="Parle à Pedro..."
+                    onkeypress="handleKeyPress(event)"
+                />
+                <button onclick="sendMessage()" id="sendButton">Envoyer</button>
+            </div>
+        </div>
+    </div>
+
+		<audio id= "musique-fond" loop>
+			<source src="Son_nuit_info.mp3" type="audio/mpeg">
+		</audio>
+
+		<script src="script.js"></script>
+		<script src="snake/snake-home.js"></script>
+		<script src="username/user.js"></script>
+		<script src="chatbot/chatbot.js"></script>
+	</body>
+</html>

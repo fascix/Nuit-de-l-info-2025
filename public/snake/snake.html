@@ -1,0 +1,38 @@
+<! DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Snake 3D Cube</title>
+		<link rel="stylesheet" href="snake.css" />
+	</head>
+	<body>
+
+		<canvas id="visualizer-canvas"></canvas>
+
+		<audio id="game-music" loop src="musique_snake.mp3"></audio>
+
+
+		<div id="game-container">
+			<div id="ui">
+				<div id="score">Score: <span id="score-value">0</span></div>
+				<div id="apple-location">Pomme sur: <span id="apple-face">-</span></div>
+				<div id="instructions">
+					<p>Utilisez les flèches pour diriger le snake</p>
+					<p>Appuyez sur ESPACE pour pause</p>
+				</div>
+			</div>
+			<div id="game-over" class="hidden">
+				<h2>Game Over!</h2>
+				<p>Score final: <span id="final-score">0</span></p>
+				<button id="restart-btn">Rejouer</button>
+			</div>
+			<div id="revenir_home">
+				<a href="../Be NIRD.html">Revenir au Quizz</a>
+			</div>
+		</div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+		<script src="snake.js"></script>
+		<script src="visuelSnake.js"></script>
+	</body>
+</html>
