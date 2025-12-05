@@ -128,5 +128,4 @@ async function sendMessage() {
 
 function handleKeyPress(event) {
     if (event.key === "Enter") sendMessage();
-
 }
