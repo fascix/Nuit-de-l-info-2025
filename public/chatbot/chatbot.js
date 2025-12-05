@@ -1,7 +1,7 @@
 // ⚠️ CONFIGURATION
 // Clé API OpenRouter
 const ENCRYPTED_API_KEY = btoa(
-    "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"
+    "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"
 );
 
 // SYSTEM PROMPT (La personnalité de Pedro)
@@ -128,4 +128,5 @@ async function sendMessage() {
 
 function handleKeyPress(event) {
     if (event.key === "Enter") sendMessage();
+
 }
