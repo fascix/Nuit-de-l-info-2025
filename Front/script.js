@@ -8,7 +8,7 @@ button.addEventListener('click', function() {
 
     setTimeout(() => {
         hiddenContent.classList.add('revealed');
-    }, 2500);
+    }, 500);
 });
 
 // ========== QUIZ ==========
@@ -149,11 +149,7 @@ questions.forEach((q, index) => {
     card.classList.add("card");
     if (index === 0) card. classList.add("active");
 
-    // ========== TITRE DE LA QUESTION (en haut) ==========
-    const questionTitle = document.createElement("h2");
-    questionTitle.classList.add("question-title");
-    questionTitle.innerHTML = `Question ${index + 1}`;
-    card.appendChild(questionTitle);
+
 
     // ========== CARTE AVEC LA QUESTION ==========
     const questionCard = document.createElement("div");
