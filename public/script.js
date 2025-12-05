@@ -320,12 +320,12 @@ document.addEventListener("DOMContentLoaded", () => {
         if(endScreen) {
             endScreen.classList.remove("hidden");
             
-            // Remplissage des infos
+            // Nom du joueur
             const endUser = document.getElementById("endUsername");
             if(endUser) endUser.textContent = window.quizUsername;
             
-            // Injection dynamique du contenu final
-            const contentDiv = document.querySelector(".custom-content") || document.querySelector(".end-content");
+            // Injection dynamique du contenu (Score + Bouton)
+            const contentDiv = document.querySelector(".custom-content");
             if (contentDiv) {
                  contentDiv.innerHTML = `
                     <h2 style="margin-bottom:20px; text-align:center;">
@@ -347,16 +347,21 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
 
                     <div style="text-align:center;">
-                        <button id="finalRestartBtn" style="padding:15px 30px; font-size:1.2em; border-radius:30px; border:none; background:white; color:#001f3f; font-weight:bold; cursor:pointer;">
-                            Recommencer l'aventure
+                        <button id="finalRestartBtn" style="padding:15px 35px; font-size:1.2em; border-radius:50px; border:none; background:white; color:#001f3f; font-weight:bold; cursor:pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.2); transition: transform 0.2s;">
+                            On repart pour un tour ?
                         </button>
                     </div>
                  `;
                  
-                 // Réattacher l'événement sur le nouveau bouton créé
+                 // Réattacher l'événement sur le bouton généré
                  setTimeout(() => {
                      const btn = document.getElementById("finalRestartBtn");
-                     if(btn) btn.onclick = () => location.reload();
+                     if(btn) {
+                        btn.onclick = () => location.reload();
+                        // Petit effet de survol en JS si besoin (optionnel)
+                        btn.onmouseover = () => btn.style.transform = "scale(1.05)";
+                        btn.onmouseout = () => btn.style.transform = "scale(1)";
+                     }
                  }, 100);
             }
         }
