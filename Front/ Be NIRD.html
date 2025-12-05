@@ -53,6 +53,63 @@
 			</div>
 		</div>
 
+		<!-- Page de fin (cachée par défaut) -->
+		<div id="endScreen" class="end-screen hidden">
+			<div class="end-content">
+				<h1 class="end-title">Bravo : <span id="endUsername"></span> !</h1>
+
+				<div class="score-box">
+					<h2 class="final-score">
+						Score Final : <span id="finalScore">0</span> / <span id="finalTotal">0</span>
+					</h2>
+					<p class="percentage">
+						<span id="finalPercentage">0</span>% de réussite
+					</p>
+				</div>
+
+				<div class="custom-content">
+					<h3 class="content-title">🌱Récapitulatif </h3>
+
+					<p class="content-text">
+						Vous avez démontré votre connaissance de la démarche NIRD et du numérique responsable.
+						Votre score prouve que vous êtes sensibilisé aux enjeux environnementaux du numérique.
+					</p>
+
+					<p class="content-text">
+						Ensemble, construisons un avenir numérique plus durable et inclusif !
+					</p>
+
+					<div class="achievements">
+						<h4 style="margin-bottom: 15px; font-size: 1.3em;">Ce que vous avez appris :</h4>
+						<ul class="achievement-list">
+							<li>✅ L'impact environnemental de la production numérique</li>
+							<li>✅ Les principes du NIRD (Numérique Inclusif Responsable Durable)</li>
+							<li>✅ Les avantages de Linux pour la durabilité</li>
+							<li>✅ L'importance du reconditionnement</li>
+							<li>✅ Les bonnes pratiques numériques responsables</li>
+						</ul>
+					</div>
+
+					<div class="next-steps">
+						<h4 style="margin-top: 25px; margin-bottom: 15px; font-size: 1.3em;"> Et maintenant ?</h4>
+						<p class="content-text">
+							Continuez à utiliser des pratiques numériques responsables au quotidien :
+						</p>
+						<ul class="achievement-list">
+							<li>🔋 Prolongez la durée de vie de vos appareils</li>
+							<li>♻️ Privilégiez le matériel reconditionné</li>
+							<li>🌍 Partagez vos connaissances avec votre entourage</li>
+							<li>💚 Adoptez des logiciels libres et durables</li>
+						</ul>
+					</div>
+				</div>
+
+				<button id="restartBtn" class="restart-button">
+					 On repart pour un tour ?
+				</button>
+			</div>
+		</div>
+
 		<script src="script.js"></script>
 		<script src="snake/snake-home.js"></script>
 		<script src="username/user.js"></script>

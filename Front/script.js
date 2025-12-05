@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	// ========== GESTION DU RIDEAU ==========
 	const button = document.getElementById("openButton");
 	const containerPrincipal = document.getElementById("containerPrincipal");
-	const hiddenContent = document.getElementById("hiddenContent");
 
 	button.addEventListener("click", function () {
 		containerPrincipal.classList.add("open");
@@ -58,13 +57,13 @@ document.addEventListener("DOMContentLoaded", () => {
 	// ========== QUIZ ==========
 	const questions = [
 		{
-			q: "La production d'un téléviseur génère environ combien de kg de CO2 ?",
+			q: "La production d'un téléviseur génère environ combien de kg de CO2 ? ",
 			answers: ["350 KG", "500 KG", "95 KG", "180 KG"],
 			correct: 0,
 			source:
-				'<a href="https://www.greenpeace.fr/la-pollution-numerique/" target="_blank">Greenpeace</a>, <a href="https://impactco2.fr/outils/numerique/television" target="_blank">ImpactCO2</a>',
+				'<a href="https://www. greenpeace.fr/la-pollution-numerique/" target="_blank">Greenpeace</a>, <a href="https://impactco2.fr/outils/numerique/television" target="_blank">ImpactCO2</a>',
 			explanation:
-				"La production d'un téléviseur génère environ 350 kg de CO2, ce qui représente une part importante de son impact environnemental.  Cette donnée souligne l'importance de prolonger la durée de vie des appareils pour réduire leur empreinte carbone.",
+				"La production d'un téléviseur génère environ 350 kg de CO2, ce qui représente une part importante de son impact environnemental.   Cette donnée souligne l'importance de prolonger la durée de vie des appareils pour réduire leur empreinte carbone.",
 		},
 		{
 			q: "Que veut dire NIRD ?",
@@ -78,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			source:
 				'<a href="https://nird.forge.apps.education.fr/index.html" target="_blank">nird.forge.apps.education. fr</a>',
 			explanation:
-				"NIRD signifie Numérique Inclusif Responsable Durable.  C'est une démarche qui vise à rendre le numérique accessible à tous tout en respectant les principes de durabilité et de responsabilité environnementale.",
+				"NIRD signifie Numérique Inclusif Responsable Durable.   C'est une démarche qui vise à rendre le numérique accessible à tous tout en respectant les principes de durabilité et de responsabilité environnementale.",
 		},
 		{
 			q: "Pourquoi l'utilisation de Linux est une des étapes de la démarche du NIRD ?",
@@ -90,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			],
 			correct: 0,
 			source:
-				'<a href="https://nird. forge.apps.education.fr/" target="_blank">NIRD</a>',
+				'<a href="https://nird.forge.apps.education. fr/" target="_blank">NIRD</a>',
 			explanation:
 				"Linux est un système d'exploitation libre qui peut être utilisé sur des machines plus anciennes, ce qui prolonge leur durée de vie et limite les déchets électroniques, s'inscrivant ainsi dans une démarche durable.",
 		},
@@ -104,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			],
 			correct: 1,
 			source:
-				'<a href="https://nird.forge.apps.education. fr/pilotes/" target="_blank">NIRD Pilotes</a>',
+				'<a href="https://nird.forge.apps.education.fr/pilotes/" target="_blank">NIRD Pilotes</a>',
 			explanation:
 				"La démarche NIRD s'inspire directement du Lycée Carnot, un établissement pionnier dans l'intégration des pratiques numériques responsables et durables.",
 		},
@@ -117,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				"Il vient avec un manuel de recyclage intégré",
 			],
 			correct: 0,
-			source: '<a href="https://www.greenit.fr/" target="_blank">GreenIT</a>',
+			source: '<a href="https://www. greenit.fr/" target="_blank">GreenIT</a>',
 			explanation:
 				"Linux peut fonctionner efficacement sur des ordinateurs anciens, évitant ainsi l'achat fréquent de matériel neuf et réduisant l'impact environnemental lié à la production et au recyclage des équipements.",
 		},
@@ -159,7 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			],
 			correct: 1,
 			source:
-				'<a href="https://nird. forge.apps.education.fr/" target="_blank">NIRD</a>, <a href="https://eduscol.education.fr/" target="_blank">Eduscol</a>',
+				'<a href="https://nird.forge.apps.education.fr/" target="_blank">NIRD</a>, <a href="https://eduscol.education.fr/" target="_blank">Eduscol</a>',
 			explanation:
 				"La démarche NIRD est ambitieuse car elle combine la transformation numérique avec la transition écologique, impliquant à la fois les collectivités, les établissements et l'institution éducative.",
 		},
@@ -183,20 +182,51 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	// Initialiser les explications
 	questions.forEach((q) => {
-		if (!q.explanation) q.explanation = "";
+		if (! q.explanation) q.explanation = "";
 	});
+
+	// ========== FONCTION POUR AFFICHER LA PAGE DE FIN ==========
+	function showEndScreen() {
+		// Calculer le pourcentage
+		const percentage = Math.round((window.quizScore / window.quizTotal) * 100);
+
+		// Cacher le quiz
+		const hiddenContent = document.getElementById("hiddenContent");
+		if (hiddenContent) {
+			hiddenContent.style.display = "none";
+		}
+
+		// Cacher le status
+		if (window.quizStatusDiv) {
+			window.quizStatusDiv.style.display = "none";
+		}
+
+		// Afficher la page de fin
+		const endScreen = document.getElementById("endScreen");
+		if (endScreen) {
+			endScreen.classList.remove("hidden");
+
+			// Remplir les données
+			document.getElementById("endUsername").textContent = window.quizUsername;
+			document.getElementById("finalScore").textContent = window.quizScore;
+			document.getElementById("finalTotal").textContent = window.quizTotal;
+			document.getElementById("finalPercentage"). textContent = percentage;
+		}
+	}
+
+	// ========== BOUTON RECOMMENCER ==========
+	const restartBtn = document.getElementById("restartBtn");
+	if (restartBtn) {
+		restartBtn.addEventListener("click", () => {
+			location.reload();
+		});
+	}
 
 	// Créer les cartes de questions
 	questions.forEach((q, index) => {
 		const card = document.createElement("div");
 		card.classList.add("card");
 		if (index === 0) card.classList.add("active");
-
-		// ========== TITRE DE LA QUESTION (en haut) ==========
-		const questionTitle = document.createElement("h2");
-		questionTitle.classList.add("question-title");
-		questionTitle.innerHTML = `Question ${index + 1}`;
-		card.appendChild(questionTitle);
 
 		// ========== CARTE AVEC LA QUESTION ==========
 		const questionCard = document.createElement("div");
@@ -210,9 +240,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		// ========== RÉPONSES (en dessous de la carte) ==========
 		const answersDiv = document.createElement("div");
-		answersDiv.classList.add("answers");
+		answersDiv.classList. add("answers");
 
-		q.answers.forEach((ans, i) => {
+		q. answers.forEach((ans, i) => {
 			const btn = document.createElement("button");
 			btn.innerHTML = ans;
 			btn.addEventListener("click", () => {
@@ -221,6 +251,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				answersDiv
 					.querySelectorAll("button")
 					.forEach((b) => (b.disabled = true));
+
 				// Incrémenter score
 				window.quizTotal++;
 				if (i === q.correct) {
@@ -230,7 +261,7 @@ document.addEventListener("DOMContentLoaded", () => {
 					btn.classList.add("wrong");
 					answersDiv
 						.querySelectorAll("button")
-						[q.correct].classList.add("correct");
+						[q.correct]. classList.add("correct");
 				}
 
 				// Mettre à jour l'affichage en temps réel
@@ -242,10 +273,17 @@ document.addEventListener("DOMContentLoaded", () => {
 				let explanationDiv = card.querySelector(".explanation");
 				if (!explanationDiv) {
 					explanationDiv = document.createElement("div");
-					explanationDiv.classList.add("explanation");
+					explanationDiv. classList.add("explanation");
 					card.appendChild(explanationDiv);
 				}
 				explanationDiv.textContent = q.explanation;
+
+				// ========== VÉRIFIER SI ON ATTEINT 5 BONNES RÉPONSES ==========
+				if (window.quizScore >= 5) {
+					setTimeout(() => {
+						showEndScreen();
+					}, 1000); // Délai de 1 seconde pour laisser voir la réponse
+				}
 			});
 			answersDiv.appendChild(btn);
 		});
@@ -265,11 +303,11 @@ document.addEventListener("DOMContentLoaded", () => {
 	let currentCard = 0;
 	const allCards = document.querySelectorAll(".card");
 	const prevBtn = document.getElementById("prevBtn");
-	const nextBtn = document.getElementById("nextBtn");
+	const nextBtn = document. getElementById("nextBtn");
 
 	function showCard(index) {
 		allCards.forEach((c) => c.classList.remove("active"));
-		allCards[index].classList.add("active");
+		allCards[index]. classList.add("active");
 		prevBtn.disabled = index === 0;
 		nextBtn.disabled = index === allCards.length - 1;
 	}
