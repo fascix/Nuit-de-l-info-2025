@@ -1,34 +1,41 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Be NIRD</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<!-- Rideau d'ouverture -->
-<div class="container-principal" id="containerPrincipal">
-    <div class="container-content">
-        <div class="title">
-            <h1>Be NIRD</h1>
-        </div>
-        <button class="button" id="openButton">Let's start the adventure !</button>
-    </div>
-</div>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Be NIRD</title>
+		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="snake/snake-home.css" />
+	</head>
+	<body>
+		<!-- Rideau d'ouverture -->
+		<div class="container-principal" id="containerPrincipal">
+			<div class="container-content">
+				<div class="title">
+					<h1>Be NIRD</h1>
+				</div>
+				<button class="button" id="openButton">
+					Let's start the adventure !
+				</button>
+			</div>
+		</div>
 
-<!-- Quiz qui apparaît après l'ouverture -->
-<div class="hidden-content" id="hiddenContent">
-    <div class="quiz-container">
-        <h1>Quête de l'aventurier</h1>
-        <div id="cards"></div>
-        <div class="nav-buttons">
-            <button id="prevBtn">← Précédent</button>
-            <button id="nextBtn">Suivant →</button>
-        </div>
-    </div>
-</div>
+		<!-- Quiz qui apparaît après l'ouverture -->
+		<div class="hidden-content" id="hiddenContent">
+			<div class="snake-home">
+				<canvas id="snake-canvas"></canvas>
+			</div>
+			<div class="quiz-container">
+				<h1>Quête de l'aventurier</h1>
+				<div id="cards"></div>
+				<div class="nav-buttons">
+					<button id="prevBtn">← Précédent</button>
+					<button id="nextBtn">Suivant →</button>
+				</div>
+			</div>
+		</div>
 
-<script src="script.js"></script>
-</body>
+		<script src="script.js"></script>
+		<script src="snake/snake-home.js"></script>
+	</body>
 </html>
