@@ -9,6 +9,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    font-family: Arial, sans-serif;
     overflow-x: hidden;
 }
 
@@ -32,7 +34,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: transform 2.5s;
+    transition: transform 2.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .container-principal::before {
@@ -74,7 +76,6 @@ body {
     text-align: center;
     z-index: 101;
     position: relative;
-
 }
 
 .title {
@@ -94,6 +95,7 @@ body {
 }
 
 .button {
+    background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
     color: #8b0000;
     border: 3px solid rgba(255, 255, 255, 0.5);
     padding: 25px 70px;
@@ -102,6 +104,7 @@ body {
     cursor: pointer;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     transition: all 0.3s ease;
+    font-family: 'Georgia', serif;
     font-weight: bold;
 }
 
@@ -113,6 +116,7 @@ body {
 
 /* ========== CONTENU CACHÉ (QUIZ) ========== */
 .hidden-content {
+    opacity: 0;
     transition: opacity 1s ease 2s;
     width: 100%;
     display: flex;
@@ -120,7 +124,6 @@ body {
     align-items: center;
     padding: 20px;
     min-height: 100vh;
-    background-color: red;
 }
 
 .hidden-content.revealed {
@@ -165,14 +168,14 @@ body {
 
 /* ========== CARTE AVEC LA QUESTION ========== */
 .question-card {
-    background-color: white;
+    background-color: #fff;
     border-radius: 20px;
     padding: 40px 50px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     width: 100%;
     max-width: 600px;
     margin: 20px 0;
-    border: 3px solid sandybrown;
+    border: 3px solid #2980b9;
 }
 
 .question-card p {

@@ -6,6 +6,7 @@
 		<title>Be NIRD</title>
 		<link rel="stylesheet" href="style.css" />
 		<link rel="stylesheet" href="snake/snake-home.css" />
+		<link rel="stylesheet" href="username/user.css">
 	</head>
 	<body>
 		<!-- Rideau d'ouverture -->
@@ -17,6 +18,23 @@
 				<button class="button" id="openButton">
 					Let's start the adventure !
 				</button>
+			</div>
+		</div>
+
+		<!-- Interface intermédiaire pour le username -->
+		<div class="username-screen" id="usernameScreen" style="display: none">
+			<div class="input-group">
+				<label for="username">Nom d'utilisateur (optionnel) :</label>
+				<input
+					type="text"
+					id="username"
+					placeholder="Tapez votre nom d'utilisateur..."
+					autocomplete="off"
+				/>
+				<p style="font-size: 0.9em; color: #555; margin-top: 5px;">
+					Vous pouvez laisser vide et cliquer sur le bouton pour passer au quiz
+				</p>
+				<button id="startQuizBtn">Commencer l'aventure</button>
 			</div>
 		</div>
 
@@ -37,5 +55,6 @@
 
 		<script src="script.js"></script>
 		<script src="snake/snake-home.js"></script>
+		<script src="username/user.js"></script>
 	</body>
 </html>
